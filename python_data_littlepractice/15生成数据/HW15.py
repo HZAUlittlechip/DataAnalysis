@@ -9,30 +9,30 @@ from random_walk import RandomWalk
 
 print(plt.style.available)
 
-# # == 设置中文字体 ==
-# plt.rcParams['font.sans-serif'] = ['simHei']  # 使用黑体(全局修改)
-# plt.rcParams['axes.unicode_minus'] = False    # 防止负号显示为方块
-#
-# # 15.1 & 15.2 立方
-# fig, ax = plt.subplots()
-#
-# x_value = range(1,5001)
-# y_value = [x**3 for x in x_value]
-#
-# # == 彩色映射 ==
-# # c=y_value 的意思是根据 y_value 的值来分配颜色
-# # 单独的颜色的话直接用 color( , , ) 就行
-# ax.scatter(x_value,y_value,c=y_value,cmap=plt.cm.inferno,s=10)
-#
-# # 添加标签
-# ax.set_title("立方数", fontsize=18)
-# ax.set_xlabel("x", fontsize=14)
-# ax.set_ylabel("x^3", fontsize=14)
-#
-# # 修改坐标轴的刻度
-# ax.tick_params(labelsize=14)  # lablesize 不是 fontsize
-#
-# plt.show()
+# == 设置中文字体 ==
+plt.rcParams['font.sans-serif'] = ['simHei']  # 使用黑体(全局修改)
+plt.rcParams['axes.unicode_minus'] = False    # 防止负号显示为方块
+
+# 15.1 & 15.2 立方
+fig, ax = plt.subplots()
+
+x_value = range(1,5001)
+y_value = [x**3 for x in x_value]
+
+# == 彩色映射 ==
+# c=y_value 的意思是根据 y_value 的值来分配颜色
+# 单独的颜色的话直接用 color( , , ) 就行
+ax.scatter(x_value,y_value,c=y_value,cmap=plt.cm.inferno,s=10)
+
+# 添加标签
+ax.set_title("立方数", fontsize=18)
+ax.set_xlabel("x", fontsize=14)
+ax.set_ylabel("x^3", fontsize=14)
+
+# 修改坐标轴的刻度
+ax.tick_params(labelsize=14)  # lablesize 不是 fontsize
+
+plt.show()
 
 # 15.3 分子运动
 # *** 改进方案 ***
