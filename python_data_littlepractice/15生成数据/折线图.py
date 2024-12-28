@@ -8,6 +8,7 @@ input_values = [1, 2, 3, 4, 5]
 print(plt.style.available)
 plt.style.use('Solarize_Light2')
 
+# == ax ---> Axes ==
 fix, ax = plt.subplots()
 
 #  修改标签⽂字和线条粗细
