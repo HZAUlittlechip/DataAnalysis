@@ -1,5 +1,5 @@
 import matplotlib.pyplot as plt
-from IPython.core.pylabtools import figsize
+
 
 from random_walk import RandomWalk
 

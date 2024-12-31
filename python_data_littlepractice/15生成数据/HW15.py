@@ -80,3 +80,31 @@ ax.set_aspect('equal')  # set_aspect() 确保两轴的间距相等
 ax.margins(0.1)     # 设置xy的边轴距离
 
 plt.show()
+
+# 15.4 改进随机游走
+# ** 改进方向 **
+# 1.修改成更远的距离
+# 2.去掉随机游走的方向
+rw = RandomWalk()
+rw.fill_walk()
+
+
+plt.style.use('classic')
+
+fig, ax = plt.subplots(figsize=(13.55, 8.47), dpi=189)
+
+
+point_number = range(rw.num_point)
+ax.scatter(rw.x_value, rw.y_value, c=point_number, cmap=plt.cm.Blues,
+           edgecolors='none',  s=15)
+ax.set_aspect('equal')
+
+
+ax.scatter(0,0, c='green', edgecolors='none', s=100)    # 初始点
+ax.scatter(rw.x_value[-1], rw.y_value[-1], c='red', edgecolors='none', s=100)
+
+# -- 隐藏坐标轴 --
+ax.get_xaxis().set_visible(False)
+ax.get_yaxis().set_visible(False)
+
+plt.show()

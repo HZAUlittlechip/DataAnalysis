@@ -17,14 +17,8 @@ class RandomWalk:
         # 循环判断何时停止游走
         while len(self.x_value) < self.num_point:
 
-            #  随机生成需要 位移的距离
-            x_direction = choice([1,-1]) # choic（[,]）
-            x_distance = choice([0, 1, 2, 3, 4])
-            x_step = x_direction * x_distance
-
-            y_direction = choice([1, -1])
-            y_distance = choice([0, 1, 2, 3, 4])
-            y_step = y_direction * y_distance
+            x_step = self.get_step()
+            y_step = self.get_step()
 
             # 不原地踏步
             if x_step == 0 and y_step == 0:
@@ -37,5 +31,13 @@ class RandomWalk:
             # 添加进x,y的列表
             self.x_value.append(x)
             self.y_value.append(y)
+
+    def get_step(self):
+        """ 确定游走的步长 """
+        direction = choice([1, -1])
+        distance = choice([0, 1, 2, 3, 4, 5])
+        step = distance * direction
+        return step
+
 
 
