@@ -38,4 +38,11 @@ fig.show()
 title = '骰100次骰子的频率直方图'
 labels ={'x':'投掷结果','y':'出现频次'}
 fig = px.bar(x=poss_results, y=frequencies, title=title, labels=labels)
+# 2. 显示完整的x轴标签
+fig.update_layout(xaxis=dict(tickmode='linear', tickangle=0))
 fig.show()
+
+# -- html 格式图像的保存
+# - json , image 格式也是可以的
+# 1. 函数内填入文件的名称 like 'dice_visual_d6d10.html'
+fig.write_html('dice_visual_d6d10.html')

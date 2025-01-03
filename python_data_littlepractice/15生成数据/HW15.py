@@ -7,6 +7,7 @@ from matplotlib.collections import LineCollection
 
 from random_walk import RandomWalk
 
+
 print(plt.style.available)
 
 # == 设置中文字体 ==
@@ -108,3 +109,92 @@ ax.get_xaxis().set_visible(False)
 ax.get_yaxis().set_visible(False)
 
 plt.show()
+
+# 15.6 两个D8
+from die import Die
+import plotly.express as px
+
+die1 = Die(8)
+die2 = Die(8)
+
+# -- 记入结果
+results = []
+for i in range(1000):
+    result = die1.roll() + die2.roll()
+    results.append(result)
+
+# -- 分析结果
+frequencies = []
+chance_die = range(2,die1.num_side + die2.num_side + 1)
+for i in chance_die:
+    frequency = results.count(i)
+    frequencies.append(frequency)
+
+# -- 结果出图
+title = '八面骰子投掷1000次的频率直方图'
+labels = {'x':'投掷结果','y':'投掷频次'}
+fig = px.bar(x=chance_die, y=frequencies, title=title, labels=labels)
+fig.show()
+
+# -- 15.7 同时投掷三个骰子
+from die import Die
+import plotly.express as px
+
+die1 = Die()
+die2 = Die()
+die3 = Die()
+
+# -- 记入结果
+results = []
+for i in range(1000):
+    result = die1.roll() + die2.roll() + die3.roll()
+    results.append(result)
+
+# -- 分析结果
+frequencies = []
+chance_die = range(3,die1.num_side + die2.num_side + die2.num_side+ 1)
+for i in chance_die:
+    frequency = results.count(i)
+    frequencies.append(frequency)
+
+# -- 结果出图
+title = '三面D6骰子投掷1000次的频率直方图'
+labels = {'x':'投掷结果','y':'投掷频次'}
+fig = px.bar(x=chance_die, y=frequencies, title=title, labels=labels)
+# - 显示全部的x轴标签
+fig.update_layout(xaxis=dict(tickmode='linear', tickangle=0))
+fig.show()
+
+# --15.8 easy
+
+# -- 15.9 列表推导式子的修改
+# ①
+# results = []
+# for i in range(1000):
+#     result = die1.roll() + die2.roll() + die3.roll()
+#     results.append(result)
+results = [die1.roll() + die2.roll() + die3.roll() for _ in range(1000)]
+
+# ②
+# frequencies = []
+# chance_die = range(3,die1.num_side + die2.num_side + die2.num_side+ 1)
+# for i in chance_die:
+#     frequency = results.count(i)
+#     frequencies.append(frequency)
+frequencies = [results.count(value) for value in chance_die]
+
+# -- 15.10 随机游走的plotly实现 和 matplotlib实现随机骰子
+# ① 随机游走
+from random_walk import RandomWalk
+import plotly.express as px
+
+rw = RandomWalk()
+rw.fill_walk()
+
+# --绘图
+titles = 'plotly的随机游走'
+# - 渐变功能的实现
+# 1.以点出现的索引来构建颜色
+point_index = list(range(rw.num_point))
+fig = px.scatter(x=rw.x_value, y=rw.y_value,title=titles,color=point_index)
+fig.show()
