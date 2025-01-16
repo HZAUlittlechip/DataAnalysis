@@ -9,12 +9,12 @@ path = Path(r'eq_data/eq_data_1_day_m1.geojson')
 contents = path.read_text()
 all_eq_data = json.loads(contents)
 
-# # -- 便于json格式数据阅读再次保存
-# path = Path(r'eq_data/eq_data_1_day_canread.geojson')
-# # 1. 重排数据 indent = 4  增加缩进
-# readable_contents = json.dumps(all_eq_data, indent=4)
-# # 2. 写入重排数据以字符串的形式
-# path.write_text(readable_contents)
+# -- 便于json格式数据阅读再次保存
+path = Path(r'eq_data/eq_data_1_day_canread.geojson')
+# 1. 重排数据 indent = 4  增加缩进
+readable_contents = json.dumps(all_eq_data, indent=4)
+# 2. 写入重排数据以字符串的形式
+path.write_text(readable_contents)
 
 # -- 有用的 键 有 features, coordinates, properties
 
