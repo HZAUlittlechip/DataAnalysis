@@ -27,6 +27,7 @@ print(a)
 # .shape 查看矩阵的尺寸 & .dtype 查看矩阵元素的数据类型
 print(a.shape) # (2, 2)
 print(a.dtype) # int32
+
 # 2. 矩阵间的运算
 b = np.array([[3, 0], [0, 6]])
 print(a + b) #[[ 4, 2],
@@ -47,6 +48,7 @@ print(x1[0][1]) # 55
 # 1.以列的形式输出
 for row in x1:
     print(row)  # [51 55]；[14 19]；[0 4]
+
 # 2.输出每个元素
 # 2，1 .flatten() 将矩阵转为一维数组
 x1 = x1.flatten()
