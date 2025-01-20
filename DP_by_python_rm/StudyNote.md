@@ -190,9 +190,11 @@ plt.show()
 
 #### sigmoid函数
 
-$\begin{align*}
+$$
+\begin{align*}
 h(x) = \frac{1}{1 + \exp(-x)}
-\end{align*}$
+\end{align*}
+$$
 
 sigmoid函数的范围在（0，1）
 
