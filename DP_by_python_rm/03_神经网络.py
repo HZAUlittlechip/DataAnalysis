@@ -26,7 +26,7 @@ plt.plot(x, y)
 plt.ylim(-0.1, 1.1)
 plt.show()
 
-# sigmoid 函数实现
+# -- sigmoid 函数实现
 def sigmoid(x):
     return 1 / (1 + np.exp(-x))
 
@@ -35,3 +35,7 @@ y = sigmoid(x)
 plt.plot(x, y)
 plt.ylim(-0.1, 1.1)
 plt.show()
+
+# -- ReLU函数实现
+def relu(x):
+    return np.maximum(0, x)
