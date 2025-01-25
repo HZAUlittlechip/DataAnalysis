@@ -39,3 +39,14 @@ plt.show()
 # -- ReLU函数实现
 def relu(x):
     return np.maximum(0, x)
+
+# -- 矩阵实现单层神经网络
+X = np.array([1.0, 0.5])
+W1 = np.array([[0.1, 0.3, 0.5],
+              [0.2, 0.4, 0.6]])
+B1 = np.array([0.1, 0.2, 0.3])
+
+A = np.dot(X, W1) + B1
+print(A) # [0.3 0.7 1.1]
+
+sigmoid(A)
