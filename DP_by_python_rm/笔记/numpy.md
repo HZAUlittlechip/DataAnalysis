@@ -57,3 +57,25 @@ np.dot(A, B)
 # array([[19, 22],
 #      [43, 50]])
 ```
+
+- `np.sum(a, axis= )`:矩阵的求和
+
+1. 对整个矩阵求和
+
+    ```python
+    import numpy as np
+    a = np.array([[1, 2], 
+                  [3, 4]])
+    print(np.sum(a)) # 10 
+    ```
+
+2. 沿特定的轴求和
+
+```python
+# 沿列的方向来求和 axis=0
+print(np.sum(a, axis=0)) # [3, 7]  [1+2, 3+4]
+
+# 沿行的方向来求和 axis=1
+print(np.sum(a, axis=1)) # [4, 6]  [1+3, 2+4]
+```
+
