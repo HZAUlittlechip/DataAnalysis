@@ -1,6 +1,8 @@
 # -- 阶跃函数的图形类型实现
 import numpy as np
 import matplotlib.pyplot as plt
+import sys, os
+sys.path.append(os.pardir)
 
 
 # - 简单形式 但其无法输入np的数组形式

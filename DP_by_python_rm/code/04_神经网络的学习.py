@@ -1,5 +1,6 @@
 import numpy as np
 
+
 # 均方误差的实现
 def mean_squared_error(y, t):
     return 0.5 * np.sum((y - t)**2)
@@ -155,7 +156,7 @@ def f(W):
 dW = numerical_gradient_2(f, net.W) # 需要使用遍历2维数组版的数值梯度计算函数
 print(dW)
 
-
+# 学习算法的实现
 
 
 
