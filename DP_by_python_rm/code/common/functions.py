@@ -71,13 +71,14 @@ def identity_function(x):
 
 # softmax函数
 def softmax(x):
-    max_x = np.max(x)  # 提取最大值
-    new_x = x - max_x
-    exp_new_x = np.exp(new_x)
-    sum_exp_x = np.sum(exp_new_x)  # np.sum 计算矩阵各元素的总和
-    y = exp_new_x / sum_exp_x
+    if x.ndim == 2:
+        x = x.T
+        x = x - np.max(x, axis=0)
+        y = np.exp(x) / np.sum(np.exp(x), axis=0)
+        return y.T
 
-    return y
+    x = x - np.max(x) # 溢出对策
+    return np.exp(x) / np.sum(np.exp(x))
 
 # 均方误差（MSE）
 def mean_squared_error(y, t):
@@ -85,8 +86,16 @@ def mean_squared_error(y, t):
 
 # 交叉熵误差
 def cross_entropy_error(y, t):
-    delta = 1e-7
-    return -np.sum(t * np.log(y + delta))
+    if y.ndim == 1:
+        t = t.reshape(1, t.size)
+        y = y.reshape(1, y.size)
+
+    # 监督数据是one-hot-vector的情况下，转换为正确解标签的索引
+    if t.size == y.size:
+        t = t.argmax(axis=1)
+
+    batch_size = y.shape[0]
+    return -np.sum(np.log(y[np.arange(batch_size), t] + 1e-7)) / batch_size
 
 def cross_entropy_error_onehot(y, t):
     """ mini_batch版 """
@@ -155,12 +164,17 @@ def numerical_gradient(f, x):
 
         x[idx] = tmp_val - h
         fxh2 = f(x)  # f(x-h)
-        grad[idx] = (fxh1 - fxh2) / (2 * h)
 
+        if fxh1 is None or fxh2 is None:
+            print(f"Error: fxh1 or fxh2 is None. Check the loss function.")
+            return grad
+
+        grad[idx] = (fxh1 - fxh2) / (2 * h)
         x[idx] = tmp_val  # 还原值
         it.iternext()
 
     return grad
+
 
 # 梯度下降
 def gradient_descent(f, init_x, lr=0.01, step_num=100):

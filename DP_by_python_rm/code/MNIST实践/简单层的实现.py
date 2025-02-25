@@ -36,20 +36,3 @@ dorange_cost, dorange_number = mul_orange_layer.backward(dorange_price)
 print(price)
 print(dtax, dapple_cost, dorange_cost, dorange_number, dapple_number)
 
-
-class ReLU():
-    def __init__(self):
-        self.mask = None # 前后向都需要的掩膜
-
-    def forward(self, x):
-        out = x.copy()
-        self.mask = (x <= 0)
-        out[self.mask] = 0
-
-        return 0
-
-    def backward(self, dout):
-        dout[self.mask] = 0
-        dx = dout
-
-        return 0
